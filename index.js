@@ -1,16 +1,15 @@
 const twitter = require("twitter")
-const https = require("https")
 const fs = require('fs');
 const config = require("./config.json")
 
-var client = new twitter({
+let client = new twitter({
     consumer_key: config.consumer_key,
     consumer_secret:config.consumer_secret,
     access_token_key:config.access_token_key,
     access_token_secret:config.access_token_secret
 })
 function getID(userName){
-    var params = {q:userName}
+    let params = {q:userName}
     client.get("users/search",params,function(error,users,response){
     if(!error){
         console.log("Searching suspects followers for @"+users[0].screen_name)
@@ -23,7 +22,7 @@ function getID(userName){
 }
 
 function searchSuspect(UserName){
-    var params = {user_id:getID(UserName),count:200};
+    let params = {user_id:getID(UserName),count:200};
     client.get('followers/list', params, function(error, users, response) {
     if (!error) {
         for(i=0;i<users.users.length;i++){
@@ -52,4 +51,4 @@ function addSuspect(suspect){
         console.log('Saved!');
       });
 }
-searchSuspect("half_no_life")
+searchSuspect("Horse_zoo")

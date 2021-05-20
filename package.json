@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "fs": "*",
+    "https": "^1.0.0",
+    "twitter": "^1.7.1"
+  }
+}
